@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hava Raporu</title>
+<style>
+:root{--m:#1d4ed8;--l:#0f2a5c;--z:#eef2f7;--s:#64748b;--c:#7c3aed}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--z);color:#1e293b;line-height:1.45;padding:10px 10px 30px;font-size:15px}
+.w{max-width:760px;margin:0 auto}
+header{background:linear-gradient(140deg,#0f2a5c,#1d4ed8 60%,#38bdf8);color:#fff;border-radius:16px;padding:16px 16px 14px;margin-bottom:12px}
+.r{display:flex;justify-content:space-between;align-items:center;gap:10px}
+h1{font-size:22px}
+#yen{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:10px;font-size:18px;padding:6px 12px}
+.alt{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.b{background:rgba(255,255,255,.17);border:1px solid rgba(255,255,255,.3);border-radius:99px;padding:2px 10px;font-size:12px}
+.b.g{background:#16a34a}.b.o{background:#b45309}
+.kart{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px rgba(15,23,42,.06)}
+h2{font-size:16px;color:var(--l);margin-bottom:10px}
+details.kart>summary{font-weight:700;color:var(--l);cursor:pointer;font-size:16px}
+input{width:100%;font-size:16px;padding:10px;border:1px solid #cbd5e1;border-radius:10px;margin-top:8px}
+button{font:inherit;cursor:pointer}
+.bt{display:flex;gap:8px;margin-top:8px}
+.bt button{flex:1;padding:10px;border-radius:10px;border:0;background:#e2e8f0;font-weight:600}
+.bt button.p{background:var(--m);color:#fff}
+.hm{color:#b91c1c;font-size:13px;margin-top:6px}
+.ipucu{color:var(--s);font-size:12.5px;margin-top:8px}
+.kr{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #e2e8f0;border-radius:10px;margin-top:8px}
+.kr.a{border-color:var(--m);background:#eff6ff}
+.kr .ad{flex:1;min-width:0}.kr .ad b{display:block}.kr .ad small{color:var(--s)}
+.kr button{border:0;background:none;font-size:20px;padding:6px}
+.gu{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.bi{font-size:52px}.bs{font-size:50px;font-weight:700;color:var(--l);line-height:1}
+.his{color:var(--s);font-size:14px;margin-top:4px}
+.kg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
+.c{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:7px 10px}
+.c .h{font-size:11.5px;color:var(--s)}.c .v{font-size:15px;font-weight:600}
+.ok{display:inline-block}
+.lst{display:flex;flex-direction:column;gap:7px}
+details.sr{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px}
+details.sr[open]{background:#fff;border-color:#93c5fd}
+details.sr.simdi{background:#eff6ff;border-color:#3b82f6}
+details.sr.gecti:not([open]){opacity:.55}
+details.sr>summary{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding:8px 12px;list-style:none;cursor:pointer}
+details.sr>summary::-webkit-details-marker{display:none}
+.sa{font-weight:700;color:var(--s);min-width:42px}
+.ik{font-size:22px;min-width:28px;text-align:center}
+.sc{font-size:19px;font-weight:700;color:var(--l);min-width:44px}
+.hs{font-size:12px;color:var(--s)}
+.du{font-size:13px;flex:1;min-width:80px}
+.ar{color:var(--s);font-size:10px;transition:transform .2s}
+details[open]>summary .ar{transform:rotate(180deg)}
+.rz{background:var(--m);color:#fff;font-size:10px;font-weight:700;border-radius:99px;padding:1px 8px}
+.mn{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:2px 12px;font-size:12px;color:var(--s)}
+.mn b{color:var(--l)}
+.dt{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:10px 12px 12px;border-top:1px dashed #e2e8f0}
+.in{padding:0 8px 10px}.in .lst{gap:6px}
+.yb{font-size:13px;font-weight:700;color:var(--l);padding:8px 12px 6px;border-top:1px dashed #e2e8f0}
+.ozet{font-size:13.5px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:8px 12px;margin-bottom:10px}
+.nt{font-size:12px;color:var(--s);text-align:center;margin-top:8px}
+.min{color:#2563eb}.mak{color:#dc2626}
+.uv{padding:1px 8px;border-radius:99px;color:#fff;font-size:12px;font-weight:600}
+.u0{background:#10b981}.u1{background:#f59e0b}.u2{background:#f97316}.u3{background:#ef4444}.u4{background:#b91c1c}
+select{width:100%;font-size:16px;padding:9px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;margin-bottom:6px}
+#ro{font-size:13.5px;font-weight:600;color:var(--l);min-height:20px;margin-bottom:2px}
+svg{width:100%;height:auto;touch-action:pan-y;display:block}
+.tk{font-size:11px;fill:#64748b}.tg{font-size:11.5px;fill:#2563eb;font-weight:700}
+.bos{text-align:center;color:var(--s);padding:30px 10px}
+@media(min-width:560px){.kg,.dt{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="w">
+<header>
+  <div class="r"><h1 id="bas">🌤️ Hava Raporu</h1><button id="yen" onclick="yukle()" title="Yenile">🔄</button></div>
+  <div class="alt" id="alt"></div>
+</header>
+
+<details class="kart" id="kp">
+  <summary>📍 Konumlar</summary>
+  <div id="kl"></div>
+  <input id="kc" placeholder="Koordinat: 37.002313, 27.257892" autocomplete="off">
+  <input id="ka" placeholder="Konum adı (isteğe bağlı)" autocomplete="off">
+  <div class="bt"><button onclick="yapistir()">📋 Yapıştır</button><button class="p" onclick="ekle()">➕ Ekle</button></div>
+  <div class="hm" id="hm"></div>
+  <p class="ipucu">Google Haritalar'da bir noktaya basılı tutun, üstte çıkan iki sayıya dokunup kopyalayın ve buraya yapıştırın. Konumlar bu cihazda kalıcı saklanır; 🗑️ ile silinir.</p>
+</details>
+
+<main id="ic"></main>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dep={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const W={0:["☀️","Açık"],1:["🌤️","Az bulutlu"],2:["⛅","Parçalı bulutlu"],3:["☁️","Kapalı"],45:["🌫️","Sis"],48:["🌫️","Kırağılı sis"],51:["🌦️","Hafif çisenti"],53:["🌦️","Çisenti"],55:["🌧️","Yoğun çisenti"],56:["🌧️","Dondurucu çisenti"],57:["🌧️","Dondurucu çisenti"],61:["🌦️","Hafif yağmur"],63:["🌧️","Yağmurlu"],65:["🌧️","Şiddetli yağmur"],66:["🌧️","Dondurucu yağmur"],67:["🌧️","Dondurucu yağmur"],71:["🌨️","Hafif kar"],73:["🌨️","Kar"],75:["❄️","Yoğun kar"],77:["❄️","Kar taneleri"],80:["🌦️","Hafif sağanak"],81:["🌧️","Sağanak"],82:["⛈️","Şiddetli sağanak"],85:["🌨️","Kar sağanağı"],86:["❄️","Yoğun kar sağanağı"],95:["⛈️","Gök gürültülü fırtına"],96:["⛈️","Dolulu fırtına"],99:["⛈️","Şiddetli dolulu fırtına"]};
+const wc=c=>W[c]||["🌡️","Kod "+c];
+const GUN=["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"],AY=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+const dt=s=>new Date(s.slice(0,10)+"T12:00:00");
+const tarih=s=>{const d=dt(s);return `${d.getDate()} ${AY[d.getMonth()]} ${GUN[d.getDay()]}`};
+const kisa=s=>{const d=dt(s);return `${d.getDate()} ${AY[d.getMonth()].slice(0,3)}`};
+const n=(v,h=0)=>v==null||isNaN(v)?"—":(+v).toFixed(h).replace(".",",");
+const pus=d=>d==null?"":["K","KKD","KD","DKD","D","DGD","GD","GGD","G","GGB","GB","BGB","B","BKB","KB","KKB"][Math.floor(((d%360)+11.25)/22.5)%16];
+const uvc=u=>"uv u"+(u<3?0:u<6?1:u<8?2:u<11?3:4);
+const cell=(h,v)=>`<div class="c"><div class="h">${h}</div><div class="v">${v}</div></div>`;
+const ok=d=>`<span class="ok" style="transform:rotate(${(d||0)+180}deg)">▲</span>`;
+
+const CUR="temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,wind_gusts_10m";
+const HR="temperature_2m,relative_humidity_2m,apparent_temperature,dew_point_2m,precipitation_probability,precipitation,weather_code,pressure_msl,cloud_cover,visibility,wind_speed_10m,wind_direction_10m,wind_gusts_10m,uv_index,is_day";
+const DY="weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,precipitation_sum,precipitation_hours,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant";
+const VARS=[["temperature_2m","🌡️ Sıcaklık","°C"],["apparent_temperature","🌡️ Hissedilen","°C"],["precipitation_probability","☔ Yağış olasılığı","%"],["precipitation","🌧️ Yağış","mm"],["wind_speed_10m","💨 Rüzgar","km/h"],["wind_gusts_10m","🌪️ Hamle","km/h"],["relative_humidity_2m","💧 Nem","%"],["cloud_cover","☁️ Bulutluluk","%"],["pressure_msl","🔽 Basınç","hPa"],["uv_index","🕶️ UV","" ]];
+
+/* ───────── konumlar (cihazda kalıcı) ───────── */
+let locs=[],sel=0,D=null,NOWI=-1;
+try{locs=JSON.parse(dep.get("hv_locs"))||[]}catch(e){}
+if(!Array.isArray(locs)||dep.get("hv_locs")===null)locs=[{ad:"Bodrum",lat:37.002313,lon:27.257892}];
+sel=Math.min(+dep.get("hv_sel")||0,Math.max(locs.length-1,0));
+const kaydet=()=>{dep.set("hv_locs",JSON.stringify(locs));dep.set("hv_sel",sel)};
+
+function konumlariCiz(){
+  $("#kl").innerHTML=locs.map((k,i)=>`<div class="kr${i===sel?" a":""}"><div class="ad" onclick="sec(${i})"><b>${esc(k.ad)}</b><small>${k.lat}, ${k.lon}</small></div><button onclick="sil(${i})" title="Sil">🗑️</button></div>`).join("");
+}
+function sec(i){sel=i;kaydet();konumlariCiz();$("#kp").open=false;yukle()}
+function sil(i){
+  if(!confirm(`'${locs[i].ad}' silinsin mi?`))return;
+  locs.splice(i,1);sel=Math.max(0,Math.min(sel,locs.length-1));
+  if(i<sel)sel--;
+  kaydet();konumlariCiz();
+  locs.length?yukle():bos();
+}
+function bos(){$("#bas").textContent="🌤️ Hava Raporu";$("#alt").innerHTML="";$("#ic").innerHTML='<div class="kart bos">Kayıtlı konum yok.<br>Yukarıdan 📍 Konumlar bölümüne koordinat ekleyin.</div>';$("#kp").open=true}
+function parse(s){
+  const m=String(s).replace(/(\d),(\d)(?!\d*[,\s]|\d*$)/g,"$1.$2").match(/-?\d+(?:[.,]\d+)?/g);
+  if(!m||m.length<2)return null;
+  const lat=parseFloat(m[0].replace(",",".")),lon=parseFloat(m[1].replace(",","."));
+  return Math.abs(lat)<=90&&Math.abs(lon)<=180?{lat,lon}:null;
+}
+function ekle(){
+  const p=parse($("#kc").value);
+  if(!p){$("#hm").textContent="Koordinat okunamadı. Örnek: 37.002313, 27.257892";return}
+  $("#hm").textContent="";
+  const ad=$("#ka").value.trim()||`${p.lat.toFixed(3)}, ${p.lon.toFixed(3)}`;
+  const v=locs.findIndex(k=>k.ad.toLowerCase()===ad.toLowerCase());
+  if(v>=0){locs[v]={ad:locs[v].ad,...p};sel=v}else{locs.push({ad,...p});sel=locs.length-1}
+  $("#kc").value="";$("#ka").value="";kaydet();konumlariCiz();$("#kp").open=false;yukle();
+}
+async function yapistir(){
+  try{$("#kc").value=await navigator.clipboard.readText()}
+  catch(e){$("#hm").textContent="Pano okunamadı — kutuya uzun basıp yapıştırın.";$("#kc").focus()}
+}
+
+/* ───────── veri ───────── */
+async function yukle(){
+  const k=locs[sel];if(!k)return bos();
+  $("#yen").style.opacity=.5;
+  const key=`hv_c_${k.lat},${k.lon}`;
+  let d=null,canli=true;
+  try{
+    const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${k.lat}&longitude=${k.lon}&current=${CUR}&hourly=${HR}&daily=${DY}&timezone=auto&forecast_days=7&_=${Date.now()}`,{cache:"no-store"});
+    if(!r.ok)throw 0;
+    d=await r.json();if(!d.hourly)throw 0;
+    dep.set(key,JSON.stringify(d));
+  }catch(e){
+    canli=false;try{d=JSON.parse(dep.get(key))}catch(x){}
+  }
+  $("#yen").style.opacity=1;
+  if(!d){$("#ic").innerHTML='<div class="kart bos">❌ Veri alınamadı. İnternet bağlantınızı kontrol edip 🔄 ile tekrar deneyin.</div>';return}
+  ciz(d,canli,k);
+}
+
+/* ───────── çizim ───────── */
+function satir(H,i,nowH){
+  const t=H.time[i],th=t.slice(0,13);
+  const cls=nowH?(th===nowH?" simdi":th<nowH?" gecti":""):"";
+  const kod=H.weather_code[i];let [ic,du]=wc(kod);
+  if(H.is_day[i]==0&&kod<2)ic="🌙";
+  const mn=[`💨 <b>${pus(H.wind_direction_10m[i])} ${n(H.wind_speed_10m[i])}</b> km/h`];
+  if(H.wind_gusts_10m[i]>=20)mn.push(`🌪️ <b>${n(H.wind_gusts_10m[i])}</b>`);
+  mn.push(`💧 <b>%${n(H.relative_humidity_2m[i])}</b>`,`☔ <b>%${n(H.precipitation_probability[i])}</b>`);
+  if(H.precipitation[i]>0)mn.push(`🌧️ <b>${n(H.precipitation[i],1)}</b> mm`);
+  const c=[cell("💨 Rüzgar",`${ok(H.wind_direction_10m[i])} ${pus(H.wind_direction_10m[i])} ${n(H.wind_speed_10m[i])} km/h`)];
+  if(H.wind_gusts_10m[i]>=20)c.push(cell("🌪️ Hamle",n(H.wind_gusts_10m[i])+" km/h"));
+  c.push(cell("💧 Nem","%"+n(H.relative_humidity_2m[i])),cell("💧 Çiy noktası",n(H.dew_point_2m[i])+"°"),cell("☁️ Bulutluluk","%"+n(H.cloud_cover[i])),cell("☔ Yağış olasılığı","%"+n(H.precipitation_probability[i])));
+  if(H.precipitation[i]>0)c.push(cell("🌧️ Yağış",n(H.precipitation[i],1)+" mm"));
+  c.push(cell("👁️ Görüş",n(H.visibility[i]/1000)+" km"));
+  if(H.uv_index[i]>=.5)c.push(cell("🕶️ UV",`<span class="${uvc(H.uv_index[i])}">${n(H.uv_index[i])}</span>`));
+  c.push(cell("🔽 Basınç",n(H.pressure_msl[i])+" hPa"));
+  return `<details class="sr${cls}"${cls===" simdi"?" open":""}><summary><span class="sa">${t.slice(11,16)}</span>${cls===" simdi"?'<span class="rz">ŞİMDİ</span>':""}<span class="ik">${ic}</span><span class="sc">${n(H.temperature_2m[i])}°</span><span class="hs">hiss. ${n(H.apparent_temperature[i])}°</span><span class="du">${du}</span><span class="ar">▼</span><div class="mn">${mn.join(" · ")}</div></summary><div class="dt">${c.join("")}</div></details>`;
+}
+const gunSaatleri=(H,g)=>H.time.map((t,i)=>t.startsWith(g)?i:-1).filter(i=>i>=0);
+
+function ciz(d,canli,k){
+  D=d;const C=d.current,H=d.hourly,Y=d.daily,yer=new Date(Date.now()+(d.utc_offset_seconds||0)*1000).toISOString().slice(0,16),nowH=yer.slice(0,13);
+  NOWI=H.time.findIndex(t=>t.slice(0,13)===nowH);
+  $("#bas").textContent="🌤️ "+k.ad;
+  $("#alt").innerHTML=(canli?'<span class="b g">● CANLI</span>':'<span class="b o">💾 ARŞİV — güncel olmayabilir</span>')+`<span class="b">🕒 ${yer.slice(11,16)} (ölçüm ${C.time.slice(11,16)})</span><span class="b">🗺️ ${k.lat}, ${k.lon}</span><span class="b">⛰️ ${n(d.elevation)} m</span><span class="b">v2</span>`;
+  const [ic,du]=wc(C.weather_code);
+  let h=`<section class="kart"><h2>🕒 Güncel Durum</h2><div class="gu"><div class="bi">${C.is_day==0&&C.weather_code<2?"🌙":ic}</div><div><div class="bs">${n(C.temperature_2m,1)}°C</div><div class="his">Hissedilen ${n(C.apparent_temperature,1)}° · ${du}</div></div></div><div class="kg">`+
+    [cell("💧 Nem","%"+n(C.relative_humidity_2m)),cell("💨 Rüzgar",`${ok(C.wind_direction_10m)} ${pus(C.wind_direction_10m)} ${n(C.wind_speed_10m)} km/h`),cell("🌪️ Hamle",n(C.wind_gusts_10m)+" km/h"),cell("☁️ Bulutluluk","%"+n(C.cloud_cover)),cell("🔽 Basınç",n(C.pressure_msl)+" hPa"),cell("🌧️ Yağış",n(C.precipitation,1)+" mm")].join("")+`</div></section>`;
+
+  h+=`<section class="kart"><h2>📈 Grafik</h2><select id="gv" onchange="grafik()">${VARS.map((v,i)=>`<option value="${i}">${v[1]}</option>`).join("")}</select><div id="ro">Grafiğe dokunup sürükleyin</div><svg id="svg" viewBox="0 0 700 240"></svg></section>`;
+
+  const t0=Y.time[0],ix=gunSaatleri(H,t0);
+  h+=`<section class="kart"><h2>🕐 Bugün — ${tarih(t0)}</h2><div class="ozet">❄️ en düşük <b>${n(Y.temperature_2m_min[0])}°</b> · 🔥 en yüksek <b>${n(Y.temperature_2m_max[0])}°</b> · ☔ <b>%${n(Y.precipitation_probability_max[0])}</b>${Y.precipitation_sum[0]>0?` · 🌧️ <b>${n(Y.precipitation_sum[0],1)} mm</b>`:""} · 💨 <b>${n(Y.wind_speed_10m_max[0])}</b> km/h (🌪️ ${n(Y.wind_gusts_10m_max[0])})</div><div class="lst">${ix.map(i=>satir(H,i,nowH)).join("")}</div><div class="nt">Saate dokunun → tüm ayrıntılar · soluk satırlar geçmiş</div></section>`;
+
+  const gun=Y.time.map((g,j)=>{
+    if(j===0)return"";
+    const [gi,gd]=wc(Y.weather_code[j]);
+    const mn=[`☔ <b>%${n(Y.precipitation_probability_max[j])}</b>`];
+    if(Y.precipitation_sum[j]>0)mn.push(`🌧️ <b>${n(Y.precipitation_sum[j],1)}</b> mm`);
+    mn.push(`💨 <b>${n(Y.wind_speed_10m_max[j])}</b> km/h`,`🌪️ <b>${n(Y.wind_gusts_10m_max[j])}</b>`,`🕶️ UV <b>${n(Y.uv_index_max[j])}</b>`);
+    const uz=Math.round((new Date(Y.sunset[j])-new Date(Y.sunrise[j]))/60000);
+    const c=[cell("☔ Yağış olasılığı","%"+n(Y.precipitation_probability_max[j])),cell("🌧️ Toplam yağış",n(Y.precipitation_sum[j],1)+" mm"),cell("⏱️ Yağışlı saat",n(Y.precipitation_hours[j])+" sa"),cell("💨 Rüzgar (maks)",n(Y.wind_speed_10m_max[j])+" km/h"),cell("🌪️ Hamle (maks)",n(Y.wind_gusts_10m_max[j])+" km/h"),cell("🧭 Baskın yön",`${ok(Y.wind_direction_10m_dominant[j])} ${pus(Y.wind_direction_10m_dominant[j])}`),cell("🌡️ Hissedilen maks",n(Y.apparent_temperature_max[j])+"°"),cell("🌡️ Hissedilen min",n(Y.apparent_temperature_min[j])+"°"),cell("🕶️ UV maks",`<span class="${uvc(Y.uv_index_max[j])}">${n(Y.uv_index_max[j])}</span>`),cell("🌅 Gün doğumu",Y.sunrise[j].slice(11,16)),cell("🌇 Gün batımı",Y.sunset[j].slice(11,16)),cell("⏱️ Gün uzunluğu",`${Math.floor(uz/60)} sa ${String(uz%60).padStart(2,"0")} dk`)];
+    const et=j===1?"Yarın":GUN[dt(g).getDay()];
+    return `<details class="sr"><summary><span class="sa" style="min-width:0">${et}</span><span class="hs">${kisa(g)}</span><span class="ik">${gi}</span><span class="du">${gd}</span><span class="sc" style="min-width:0"><span class="min">${n(Y.temperature_2m_min[j])}°</span>/<span class="mak">${n(Y.temperature_2m_max[j])}°</span></span><span class="ar">▼</span><div class="mn">${mn.join(" · ")}</div></summary><div class="dt">${c.join("")}</div><div class="yb">🕐 Saat saat — saate dokunun</div><div class="in"><div class="lst">${gunSaatleri(H,g).map(i=>satir(H,i,null)).join("")}</div></div></details>`;
+  }).join("");
+  h+=`<section class="kart"><h2>📅 Yarın ve Diğer Günler</h2><div class="lst">${gun}</div></section>`;
+  $("#ic").innerHTML=h;
+  grafik();
+}
+
+function grafik(){
+  if(!D)return;
+  const v=VARS[+$("#gv").value],H=D.hourly,y=H[v[0]].map(Number),N=y.length;
+  const Wd=700,Ht=240,pl=44,pr=12,pt=22,pb=34,gw=Wd-pl-pr,gh=Ht-pt-pb;
+  let lo=Math.min(...y),hi=Math.max(...y);const ar=(hi-lo)||1;lo-=ar*.15;hi+=ar*.15;
+  if(lo<0&&Math.min(...y)>=0)lo=0;
+  const X=i=>pl+i/(N-1)*gw,Y=x=>pt+(1-(x-lo)/(hi-lo))*gh;
+  let s="";
+  for(let q=0;q<5;q++){const val=lo+(hi-lo)*q/4,yy=Y(val);s+=`<line x1="${pl}" y1="${yy}" x2="${pl+gw}" y2="${yy}" stroke="#e2e8f0"/><text x="${pl-6}" y="${yy+4}" text-anchor="end" class="tk">${n(val,hi-lo<10?1:0)}</text>`}
+  const pts=y.map((a,i)=>`${X(i).toFixed(1)},${Y(a).toFixed(1)}`).join(" ");
+  s+=`<polygon points="${pl},${pt+gh} ${pts} ${pl+gw},${pt+gh}" fill="#2563eb" fill-opacity=".12"/><polyline points="${pts}" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round"/>`;
+  H.time.forEach((t,i)=>{if(t.slice(11,13)==="00")s+=`<line x1="${X(i)}" y1="${pt+gh}" x2="${X(i)}" y2="${pt+gh+7}" stroke="#2563eb"/><text x="${X(i)}" y="${pt+gh+22}" text-anchor="middle" class="tg">${kisa(t)}</text>`});
+  if(NOWI>=0)s+=`<line x1="${X(NOWI)}" y1="${pt}" x2="${X(NOWI)}" y2="${pt+gh}" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 4"/><text x="${X(NOWI)}" y="${pt-8}" text-anchor="middle" style="font-size:11px;font-weight:700;fill:#7c3aed">ŞİMDİ</text>`;
+  s+=`<line id="cl" x1="0" y1="${pt}" x2="0" y2="${pt+gh}" stroke="#0f2a5c" stroke-width="1.5" visibility="hidden"/>`;
+  const svg=$("#svg");svg.innerHTML=s;
+  const mv=e=>{
+    const r=svg.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*Wd;
+    const i=Math.max(0,Math.min(N-1,Math.round((x-pl)/gw*(N-1))));
+    const cl=$("#cl");cl.setAttribute("x1",X(i));cl.setAttribute("x2",X(i));cl.setAttribute("visibility","visible");
+    $("#ro").textContent=`${kisa(H.time[i])} ${H.time[i].slice(11,16)} — ${n(y[i],1)} ${v[2]}`;
+  };
+  svg.onpointermove=mv;svg.onpointerdown=mv;
+}
+
+konumlariCiz();
+locs.length?yukle():bos();
+</script>
+</body>
+</html>
